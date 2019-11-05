@@ -7,9 +7,11 @@ zk = KazooClient(hosts="127.0.0.1:2181")
 zk.start()
 
 @zk.DataWatch('/test/watch')
-def my_func(data, stat):
-    pass
+def my_func(data, stat, *args, **kwargs):
+    print data
 
-time.sleep(10)
+
+while True:
+    time.sleep(5)
 
 zk.stop()
